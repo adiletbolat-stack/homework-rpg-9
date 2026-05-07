@@ -1,6 +1,8 @@
 package com.narxoz.rpg.combatant;
 
 import com.narxoz.rpg.artifact.Artifact;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,7 +37,11 @@ public final class HeroMemento {
         this.maxHp = maxHp;
         this.attackPower = attackPower;
         this.defense = defense;
-        this.inventorySnapshot = inventorySnapshot == null ? List.of() : List.copyOf(inventorySnapshot);
+        if (inventorySnapshot == null) {
+    this.inventorySnapshot = new ArrayList<>();
+} else {
+    this.inventorySnapshot = new ArrayList<>(inventorySnapshot);
+}
     }
 
     String getName() {

@@ -16,8 +16,8 @@ public class Scroll extends Artifact {
         return spellName;
     }
 
-    @Override
-    public void accept(ArtifactVisitor visitor) {
-        // TODO: call visitor.visit(this) for double dispatch.
-    }
+ @Override
+public void accept(ArtifactVisitor visitor) {
+    visitor.visit(this);
+}
 }

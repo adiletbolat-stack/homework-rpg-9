@@ -16,8 +16,8 @@ public class Weapon extends Artifact {
         return attackBonus;
     }
 
-    @Override
-    public void accept(ArtifactVisitor visitor) {
-        // TODO: call visitor.visit(this) for double dispatch.
-    }
+@Override
+public void accept(ArtifactVisitor visitor) {
+    visitor.visit(this);
+}
 }

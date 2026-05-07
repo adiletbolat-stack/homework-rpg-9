@@ -17,7 +17,7 @@ public class Armor extends Artifact {
     }
 
     @Override
-    public void accept(ArtifactVisitor visitor) {
-        // TODO: call visitor.visit(this) for double dispatch.
-    }
+public void accept(ArtifactVisitor visitor) {
+    visitor.visit(this);
+}
 }

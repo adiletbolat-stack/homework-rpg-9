@@ -16,8 +16,8 @@ public class Potion extends Artifact {
         return healing;
     }
 
-    @Override
-    public void accept(ArtifactVisitor visitor) {
-        // TODO: call visitor.visit(this) for double dispatch.
-    }
+   @Override
+public void accept(ArtifactVisitor visitor) {
+    visitor.visit(this);
+}
 }

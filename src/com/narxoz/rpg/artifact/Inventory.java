@@ -25,6 +25,16 @@ public class Inventory {
         }
     }
 
+    public void addAll(List<Artifact> artifacts) {
+    if (artifacts != null) {
+        this.artifacts.addAll(artifacts);
+    }
+}
+
+public void clear() {
+    artifacts.clear();
+}
+
     public List<Artifact> getArtifacts() {
         return Collections.unmodifiableList(artifacts);
     }
