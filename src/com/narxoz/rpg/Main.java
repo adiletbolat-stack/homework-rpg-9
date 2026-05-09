@@ -1,20 +1,69 @@
 package com.narxoz.rpg;
 
-/**
- * Entry point for Homework 9 — Chronomancer's Vault: Visitor + Memento.
- *
- * The scaffold prints the banner only; students fill in the vault demo.
- */
+import com.narxoz.rpg.artifact.Inventory;
+import com.narxoz.rpg.combatant.Hero;
+import com.narxoz.rpg.visitor.GoldValueVisitor;
+import com.narxoz.rpg.visitor.LoreVisitor;
+import com.narxoz.rpg.visitor.WeightAuditVisitor;
+import com.narxoz.rpg.vault.ChronomancerEngine;
+import com.narxoz.rpg.vault.VaultRunResult;
+
+import java.util.Arrays;
+
+
 public class Main {
 
     public static void main(String[] args) {
-        System.out.println("=== Homework 9 Demo: Visitor + Memento ===");
 
-        // 1. Create at least 2 heroes with different starting states.
-        // 2. Build an artifact inventory and exercise the visitor interface.
-        // 3. Capture a hero snapshot through the memento workflow.
-        // 4. Rewind the hero after a vault trap changes state.
-        // 5. Run the ChronomancerEngine demo sequence.
-        // 6. Print a final VaultRunResult summary.
+        printBanner();
+        Hero warrior = new Hero(
+                "Albert",
+                150,
+                25,
+                35,
+                20,
+                100,
+                new Inventory()
+        );
+
+        Hero mage = new Hero(
+                "Kate",
+                90,
+                120,
+                15,
+                8,
+                250,
+                new Inventory()
+        );
+
+
+        GoldValueVisitor goldVisitor = new GoldValueVisitor();
+        WeightAuditVisitor weightVisitor = new WeightAuditVisitor();
+        LoreVisitor loreVisitor = new LoreVisitor();
+
+        System.out.println("Visitors initialized:");
+        System.out.println("- " + goldVisitor.getClass().getSimpleName());
+        System.out.println("- " + weightVisitor.getClass().getSimpleName());
+        System.out.println("- " + loreVisitor.getClass().getSimpleName());
+
+        ChronomancerEngine engine = new ChronomancerEngine();
+
+    
+        VaultRunResult result = engine.runVault(
+               Arrays.asList(warrior, mage)
+        );
+
+
+        System.out.println();
+        System.out.println("=== FINAL VAULT RESULT ===");
+        System.out.println(result);
+    }
+
+    private static void printBanner() {
+
+        System.out.println("====================================");
+        System.out.println("     CHRONOMANCER'S VAULT DEMO      ");
+        System.out.println("====================================");
+        System.out.println();
     }
 }
